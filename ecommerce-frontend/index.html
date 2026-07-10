@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ShopSphere | Home</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="index.html" class="logo">ShopSphere</a>
+
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <nav id="navLinks" class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="products.html">Products</a>
+        <a href="wishlist.html">Wishlist</a>
+        <a href="orders.html">Orders</a>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="cart.html" class="cart-link">Cart <span id="cartCount" class="badge">0</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-badge">New Collection 2026</span>
+        <h1>Modern Shopping Experience for Every Need</h1>
+        <p>
+          Discover electronics, fashion, accessories, and lifestyle products in one place.
+          Fast, simple, and elegant shopping built with Django + DRF + PostgreSQL.
+        </p>
+        <div class="hero-actions">
+          <a href="products.html" class="btn btn-primary">Shop Now</a>
+          <a href="#featured" class="btn btn-outline">Explore</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <div class="hero-card-top">
+          <span>Trending Offer</span>
+          <span>30% OFF</span>
+        </div>
+        <h3>Wireless Headphones</h3>
+        <p>Premium sound, modern comfort, and long battery life.</p>
+        <div class="hero-price">₹2,499</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="categories section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Shop by Category</h2>
+        <p>Browse our most popular categories</p>
+      </div>
+
+      <div class="category-grid">
+        <div class="category-card">
+          <h3>Electronics</h3>
+          <p>Phones, accessories, smart devices</p>
+        </div>
+        <div class="category-card">
+          <h3>Fashion</h3>
+          <p>Stylish wear for every occasion</p>
+        </div>
+        <div class="category-card">
+          <h3>Footwear</h3>
+          <p>Comfort and style for daily wear</p>
+        </div>
+        <div class="category-card">
+          <h3>Home Essentials</h3>
+          <p>Upgrade your home with useful products</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="featured" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Featured Products</h2>
+        <p>Handpicked products for you</p>
+      </div>
+
+      <div id="featuredProducts" class="product-grid"></div>
+    </div>
+  </section>
+
+  <section class="promo section">
+    <div class="container promo-box">
+      <div>
+        <h2>Special Deal This Week</h2>
+        <p>Get up to 40% off on selected accessories and gadgets.</p>
+      </div>
+      <a href="products.html" class="btn btn-primary">View Deals</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <h3>ShopSphere</h3>
+        <p>Your complete e-commerce learning project with frontend + Django backend.</p>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+        <a href="orders.html">Orders</a>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <a href="login.html">Login</a>
+        <a href="register.html">Register</a>
+        <a href="wishlist.html">Wishlist</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 ShopSphere. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
