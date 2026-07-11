@@ -241,13 +241,13 @@ python manage.py runserver
 Backend runs at:
 
 ```bash
-http://127.0.0.1:8000/
+https://tezmart-backend.onrender.com
 ```
 
 Admin panel:
 
 ```bash
-http://127.0.0.1:8000/admin/
+https://tezmart-backend.onrender.com/admin/
 ```
 
 ---
