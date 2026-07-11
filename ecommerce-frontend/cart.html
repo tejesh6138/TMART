@@ -1,69 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ShopSphere | Cart</title>
-  <link rel="stylesheet" href="css/style.css" />
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tezmart | Cart</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
 </head>
+
 <body>
-  <header class="header">
-    <div class="container nav">
-      <a href="index.html" class="logo">ShopSphere</a>
 
-      <button class="menu-toggle" id="menuToggle">☰</button>
 
-      <nav id="navLinks" class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="products.html">Products</a>
-        <a href="wishlist.html">Wishlist</a>
-        <a href="orders.html">Orders</a>
-        <a href="login.html">Login</a>
-        <a href="register.html">Register</a>
-        <a href="cart.html" class="cart-link active">Cart <span id="cartCount" class="badge">0</span></a>
-      </nav>
+<header class="header">
+
+  <div class="container nav">
+
+    <a href="index.html" class="tezmart-logo">
+
+      <span class="logo-bag">
+
+        <span class="bag-handle"></span>
+
+        <span class="bag-body">
+
+          <span class="bag-mark">T</span>
+
+        </span>
+
+      </span>
+
+
+      <span class="brand-wrap">
+
+        <span class="brand-name">
+
+          <span class="brand-tez">Tez</span><span class="brand-mart">mart</span>
+
+        </span>
+
+        <span class="brand-tagline">
+
+          SHOP SMART, LIVE BETTER
+
+        </span>
+
+      </span>
+
+    </a>
+
+
+    <nav id="navLinks" class="nav-links">
+
+      <a href="index.html">Home</a>
+
+      <a href="products.html">Products</a>
+
+      <a href="cart.html" class="cart-link active">
+
+        Cart
+
+        <span id="cartCount" class="badge">0</span>
+
+      </a>
+
+      <a href="login.html" id="authNavLink" class="login-nav-btn">
+
+        <span>Login</span>
+
+      </a>
+
+    </nav>
+
+
+    <button class="menu-toggle" id="menuToggle">
+
+      <span></span>
+
+      <span></span>
+
+      <span></span>
+
+    </button>
+
+  </div>
+
+</header>
+
+
+<div class="menu-overlay" id="menuOverlay"></div>
+
+
+<aside class="tez-sidebar" id="tezSidebar">
+
+  <div class="tez-sidebar-head">
+
+    <div class="sidebar-brand">
+
+      <span class="sidebar-t">T</span>
+
+      <strong>Tez<span>mart</span></strong>
+
     </div>
-  </header>
 
-  <section class="page-header">
-    <div class="container">
-      <h1>Your Cart</h1>
-      <p>Review your selected items before checkout</p>
+    <button class="sidebar-close" id="sidebarClose">
+
+      &times;
+
+    </button>
+
+  </div>
+
+
+  <p class="sidebar-label">EXPLORE TEZMART</p>
+
+
+  <div class="sidebar-menu">
+
+    <a href="register.html">
+
+      <span class="side-icon">✦</span>
+
+      <span>
+
+        <strong>Register</strong>
+
+        <small>Create your Tezmart account</small>
+
+      </span>
+
+    </a>
+
+
+    <a href="wishlist.html">
+
+      <span class="side-icon">♡</span>
+
+      <span>
+
+        <strong>Wishlist</strong>
+
+        <small>View your favourite products</small>
+
+      </span>
+
+    </a>
+
+
+    <a href="orders.html">
+
+      <span class="side-icon">▣</span>
+
+      <span>
+
+        <strong>My Orders</strong>
+
+        <small>Track your purchases</small>
+
+      </span>
+
+    </a>
+
+  </div>
+
+
+  <div class="sidebar-foot">
+
+    SHOP SMART <span>•</span> LIVE BETTER
+
+  </div>
+
+</aside>
+
+
+<section class="page-header">
+
+  <div class="container">
+
+    <h1>Your Cart</h1>
+
+    <p>Review your selected items before checkout</p>
+
+  </div>
+
+</section>
+
+
+<section class="section">
+
+  <div class="container cart-layout">
+
+    <div class="cart-items">
+
+      <div id="cartItemsContainer"></div>
+
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container cart-layout">
-      <div class="cart-items">
-        <div id="cartItemsContainer"></div>
+
+    <div class="cart-summary">
+
+      <h3>Order Summary</h3>
+
+
+      <div class="summary-row">
+
+        <span>Subtotal</span>
+
+        <span id="subtotalAmount">₹0</span>
+
       </div>
 
-      <div class="cart-summary">
-        <h3>Order Summary</h3>
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span id="subtotalAmount">₹0</span>
-        </div>
-        <div class="summary-row">
-          <span>Shipping</span>
-          <span>₹99</span>
-        </div>
-        <div class="summary-row total">
-          <span>Total</span>
-          <span id="totalAmount">₹0</span>
-        </div>
-        <a href="checkout.html" class="btn btn-primary full-width">Proceed to Checkout</a>
+
+      <div class="summary-row">
+
+        <span>Shipping</span>
+
+        <span>₹99</span>
+
       </div>
-    </div>
-  </section>
 
-  <footer class="footer">
-    <div class="footer-bottom">
-      <p>© 2026 ShopSphere. All rights reserved.</p>
-    </div>
-  </footer>
 
-  <script src="js/app.js"></script>
-  <script src="js/cart.js"></script>
+      <div class="summary-row total">
+
+        <span>Total</span>
+
+        <span id="totalAmount">₹0</span>
+
+      </div>
+
+
+      <a
+        href="checkout.html"
+        class="btn btn-primary full-width"
+      >
+
+        Proceed to Checkout
+
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer class="footer">
+
+  <div class="footer-bottom">
+
+    <p>© 2026 Tezmart. All rights reserved.</p>
+
+  </div>
+
+</footer>
+
+
+<script src="js/app.js"></script>
+
+<script src="js/cart.js"></script>
+
+
 </body>
+
 </html>
