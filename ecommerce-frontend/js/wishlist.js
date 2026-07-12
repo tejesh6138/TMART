@@ -25,26 +25,33 @@ document.addEventListener("DOMContentLoaded", async () => {
         return;
       }
 
-      wishlistContainer.innerHTML = wishlist.map(item => `
-        <div class="product-card">
-          <div class="product-image">
-            ${
-              item.product.image
-                ? `<img src="${item.product.image}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`
-                : item.product.name
-            }
-          </div>
-          <h3>${item.product.name}</h3>
-          <p class="category">${item.product.category?.name || "Category"}</p>
-          <div class="product-bottom">
-            <span class="price">₹${item.product.price}</span>
-            <div style="display:flex; gap:8px;">
-              <a href="product.html?id=${item.product.id}" class="btn btn-sm">View</a>
-              <button class="btn btn-sm remove-wishlist-btn" data-id="${item.id}">Remove</button>
+      wishlistContainer.innerHTML = wishlist.map(item => {
+        const safeImg = item.product.image || DEFAULT_PLACEHOLDER;
+        const escapedName = item.product.name.replace(/'/g, "\\'");
+        const escapedCat = (item.product.category?.name || "").replace(/'/g, "\\'");
+
+        return `
+          <div class="product-card" onclick="if(event.target.tagName !== 'BUTTON' && event.target.tagName !== 'A') window.location.href='product.html?id=${item.product.id}'">
+            <div class="product-image">
+              <img 
+                src="${safeImg}" 
+                alt="${item.product.name}" 
+                onerror="handleProductImageError(this, '${escapedName}', '${escapedCat}')"
+                style="width:100%;height:100%;object-fit:contain;border-radius:12px;"
+              />
+            </div>
+            <h3>${item.product.name}</h3>
+            <p class="category">${item.product.category?.name || "Category"}</p>
+            <div class="product-bottom">
+              <span class="price">₹${parseFloat(item.product.price).toFixed(2)}</span>
+              <div style="display:flex; gap:8px;">
+                <a href="product.html?id=${item.product.id}" class="btn btn-sm" style="background:var(--dark); color:var(--white);">View</a>
+                <button class="btn btn-sm remove-wishlist-btn" data-id="${item.id}" style="background:var(--dark); color:var(--white);">Remove</button>
+              </div>
             </div>
           </div>
-        </div>
-      `).join("");
+        `;
+      }).join("");
 
       bindRemoveButtons();
     } catch (error) {

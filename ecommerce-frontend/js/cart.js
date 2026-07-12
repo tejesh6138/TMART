@@ -77,20 +77,25 @@ document.addEventListener("DOMContentLoaded", async () => {
         subtotal += itemTotal;
         totalQty += item.quantity;
 
+        const safeImg = item.product.image || DEFAULT_PLACEHOLDER;
+        const escapedName = item.product.name.replace(/'/g, "\\'");
+        const escapedCat = (item.product.category?.name || "").replace(/'/g, "\\'");
+
         return `
           <div class="cart-item">
             <div class="cart-item-image">
-              ${
-                item.product.image
-                  ? `<img src="${item.product.image}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`
-                  : item.product.name
-              }
+              <img 
+                src="${safeImg}" 
+                alt="${item.product.name}" 
+                onerror="handleProductImageError(this, '${escapedName}', '${escapedCat}')"
+                style="width:100%;height:100%;object-fit:contain;border-radius:12px;"
+              />
             </div>
 
             <div>
               <h3>${item.product.name}</h3>
               <p>${item.product.category?.name || "Category"}</p>
-              <p>₹${item.product.price}</p>
+              <p>₹${itemPrice.toFixed(2)}</p>
             </div>
 
             <div>
@@ -103,7 +108,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 data-product-id="${item.product.id}" 
                 class="cart-qty-input" 
               />
-              <button class="btn btn-sm remove-btn" data-id="${item.id}" style="margin-top:10px;">Remove</button>
+              <button class="btn btn-sm remove-btn" data-id="${item.id}" style="margin-top:10px; background:var(--dark); color:var(--white);">Remove</button>
             </div>
           </div>
         `;

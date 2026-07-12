@@ -17,164 +17,55 @@
 
 
 <header class="header">
-
   <div class="container nav">
 
+    <!-- LEFT: Tezmart premium logo and brand name -->
     <a href="index.html" class="tezmart-logo">
-
       <span class="logo-bag">
-
         <span class="bag-handle"></span>
-
         <span class="bag-body">
-
           <span class="bag-mark">T</span>
-
         </span>
-
       </span>
-
-
       <span class="brand-wrap">
-
         <span class="brand-name">
-
           <span class="brand-tez">Tez</span><span class="brand-mart">mart</span>
-
         </span>
-
-        <span class="brand-tagline">
-
-          SHOP SMART, LIVE BETTER
-
-        </span>
-
       </span>
-
     </a>
 
-
-    <nav id="navLinks" class="nav-links">
-
-      <a href="index.html">Home</a>
-
-      <a href="products.html">Products</a>
-
-      <a href="cart.html" class="cart-link">
-
-        Cart
-
-        <span id="cartCount" class="badge">0</span>
-
-      </a>
-
-      <a href="login.html" id="authNavLink" class="login-nav-btn">
-
-        <span>Login</span>
-
-      </a>
-
-    </nav>
-
-
-    <button class="menu-toggle" id="menuToggle">
-
-      <span></span>
-
-      <span></span>
-
-      <span></span>
-
-    </button>
-
-  </div>
-
-</header>
-
-
-<div class="menu-overlay" id="menuOverlay"></div>
-
-
-<aside class="tez-sidebar" id="tezSidebar">
-
-  <div class="tez-sidebar-head">
-
-    <div class="sidebar-brand">
-
-      <span class="sidebar-t">T</span>
-
-      <strong>Tez<span>mart</span></strong>
-
+    <!-- CENTER: Large search bar -->
+    <div class="search-container">
+      <form id="navSearchForm" class="search-form">
+        <input 
+          type="text" 
+          id="navSearchInput" 
+          placeholder="Search products, brands, categories..."
+        />
+        <button type="submit" class="search-btn" aria-label="Search">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+      </form>
     </div>
 
-    <button class="sidebar-close" id="sidebarClose">
-
-      &times;
-
-    </button>
-
-  </div>
-
-
-  <p class="sidebar-label">EXPLORE TEZMART</p>
-
-
-  <div class="sidebar-menu">
-
-    <a href="register.html">
-
-      <span class="side-icon">✦</span>
-
-      <span>
-
-        <strong>Register</strong>
-
-        <small>Create your Tezmart account</small>
-
-      </span>
-
-    </a>
-
-
-    <a href="wishlist.html">
-
-      <span class="side-icon">♡</span>
-
-      <span>
-
-        <strong>Wishlist</strong>
-
-        <small>View your favourite products</small>
-
-      </span>
-
-    </a>
-
-
-    <a href="orders.html">
-
-      <span class="side-icon">▣</span>
-
-      <span>
-
-        <strong>My Orders</strong>
-
-        <small>Track your purchases</small>
-
-      </span>
-
-    </a>
+    <!-- RIGHT: Cart and Login -->
+    <div class="nav-right">
+      <a href="cart.html" class="cart-link">
+        <svg viewBox="0 0 24 24" width="22" height="22" style="display: inline-block; vertical-align: middle;">
+          <path fill="currentColor" d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/>
+        </svg>
+        <span>Cart</span>
+        <span id="cartCount" class="badge">0</span>
+      </a>
+      <a href="login.html" id="authNavLink" class="login-nav-btn">
+        <span>Login</span>
+      </a>
+    </div>
 
   </div>
-
-
-  <div class="sidebar-foot">
-
-    SHOP SMART <span>•</span> LIVE BETTER
-
-  </div>
-
-</aside>
+</header>
 
 
 <section class="page-header">
