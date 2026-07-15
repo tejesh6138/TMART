@@ -11,7 +11,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   async function fetchCartItems() {
-    const response = await fetch(`${API_BASE_URL}/cart/?user_id=${user.id}`);
+    const response = await fetch(`${API_BASE_URL}/cart/?user_id=${user.id}`, {
+      credentials: 'include'
+    });
     if (!response.ok) throw new Error("Failed to fetch cart");
     return await response.json();
   }
@@ -35,7 +37,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         return `
           <div class="summary-row">
             <span>${item.product.name} × ${item.quantity}</span>
-            <span>₹${itemTotal.toFixed(2)}</span>
+            <span>₹${itemTotal.toLocaleString()}</span>
           </div>
         `;
       }).join("");
@@ -44,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <hr style="margin: 15px 0;">
         <div class="summary-row">
           <span>Subtotal</span>
-          <span>₹${subtotal.toFixed(2)}</span>
+          <span>₹${subtotal.toLocaleString()}</span>
         </div>
         <div class="summary-row">
           <span>Shipping</span>
@@ -52,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         </div>
         <div class="summary-row total">
           <span>Total</span>
-          <span>₹${(subtotal + 99).toFixed(2)}</span>
+          <span>₹${(subtotal + 99).toLocaleString()}</span>
         </div>
       `;
     } catch (error) {
@@ -99,7 +101,8 @@ document.addEventListener("DOMContentLoaded", async () => {
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify(orderPayload)
+          body: JSON.stringify(orderPayload),
+          credentials: 'include'
         });
 
         const orderData = await orderResponse.json();
@@ -112,7 +115,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         for (const item of cart) {
           await fetch(`${API_BASE_URL}/cart/${item.id}/`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: 'include'
           });
         }
 

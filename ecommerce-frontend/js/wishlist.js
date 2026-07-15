@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function loadWishlist() {
     try {
-      const response = await fetch(`${API_BASE_URL}/wishlist/?user_id=${user.id}`);
+      const response = await fetch(`${API_BASE_URL}/wishlist/?user_id=${user.id}`, {
+        credentials: 'include'
+      });
       if (!response.ok) throw new Error("Failed to fetch wishlist");
 
       const wishlist = await response.json();
@@ -28,16 +30,19 @@ document.addEventListener("DOMContentLoaded", async () => {
       wishlistContainer.innerHTML = wishlist.map(item => `
         <div class="product-card">
           <div class="product-image">
-            ${
-              item.product.image
-                ? `<img src="${item.product.image}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`
-                : item.product.name
-            }
+            <img 
+              src="${getProductImageUrl(item.product.image)}" 
+              alt="${item.product.name}" 
+              style="width:100%;height:100%;object-fit:cover;border-radius:12px;"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1531403009284-440f085d1e12?w=800';"
+            >
           </div>
           <h3>${item.product.name}</h3>
           <p class="category">${item.product.category?.name || "Category"}</p>
-          <div class="product-bottom">
-            <span class="price">₹${item.product.price}</span>
+          <div class="product-bottom" style="display:flex; justify-content:space-between; align-items:center;">
+            <div style="display:flex; flex-direction:column; gap:4px;">
+              ${renderProductPriceHtml(item.product.price, item.product.mrp)}
+            </div>
             <div style="display:flex; gap:8px;">
               <a href="product.html?id=${item.product.id}" class="btn btn-sm">View</a>
               <button class="btn btn-sm remove-wishlist-btn" data-id="${item.id}">Remove</button>
@@ -61,7 +66,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         try {
           const response = await fetch(`${API_BASE_URL}/wishlist/${wishlistId}/`, {
-            method: "DELETE"
+            method: "DELETE",
+            credentials: 'include'
           });
 
           if (!response.ok) {
@@ -69,6 +75,7 @@ document.addEventListener("DOMContentLoaded", async () => {
           }
 
           loadWishlist();
+          updateWishlistCount();
         } catch (error) {
           alert("Failed to remove wishlist item.");
         }

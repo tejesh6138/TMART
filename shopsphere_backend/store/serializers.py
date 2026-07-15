@@ -20,6 +20,7 @@ class ProductSerializer(serializers.ModelSerializer):
             'slug',
             'description',
             'price',
+            'mrp',
             'stock',
             'image',
             'is_available',

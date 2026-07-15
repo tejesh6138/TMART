@@ -17,7 +17,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   async function fetchCartItems() {
-    const response = await fetch(`${API_BASE_URL}/cart/?user_id=${user.id}`);
+    const response = await fetch(`${API_BASE_URL}/cart/?user_id=${user.id}`, {
+      credentials: 'include'
+    });
     if (!response.ok) throw new Error("Failed to fetch cart");
     return await response.json();
   }
@@ -32,7 +34,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         user_id: user.id,
         product_id: productId,
         quantity: quantity
-      })
+      }),
+      credentials: 'include'
     });
 
     if (!response.ok) {
@@ -44,7 +47,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function deleteCartItem(cartItemId) {
     const response = await fetch(`${API_BASE_URL}/cart/${cartItemId}/`, {
-      method: "DELETE"
+      method: "DELETE",
+      credentials: 'include'
     });
 
     if (!response.ok) {
@@ -80,17 +84,18 @@ document.addEventListener("DOMContentLoaded", async () => {
         return `
           <div class="cart-item">
             <div class="cart-item-image">
-              ${
-                item.product.image
-                  ? `<img src="${item.product.image}" alt="${item.product.name}" style="width:100%;height:100%;object-fit:cover;border-radius:12px;">`
-                  : item.product.name
-              }
+              <img 
+                src="${getProductImageUrl(item.product.image)}" 
+                alt="${item.product.name}" 
+                style="width:100%;height:100%;object-fit:cover;border-radius:12px;"
+                onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1531403009284-440f085d1e12?w=800';"
+              >
             </div>
 
             <div>
               <h3>${item.product.name}</h3>
               <p>${item.product.category?.name || "Category"}</p>
-              <p>₹${item.product.price}</p>
+              <p>₹${itemPrice.toLocaleString()}</p>
             </div>
 
             <div>
@@ -110,8 +115,8 @@ document.addEventListener("DOMContentLoaded", async () => {
       }).join("");
 
       const shipping = cart.length ? 99 : 0;
-      subtotalAmount.textContent = `₹${subtotal.toFixed(2)}`;
-      totalAmount.textContent = `₹${(subtotal + shipping).toFixed(2)}`;
+      subtotalAmount.textContent = `₹${subtotal.toLocaleString()}`;
+      totalAmount.textContent = `₹${(subtotal + shipping).toLocaleString()}`;
 
       updateCartCount(totalQty);
       bindCartEvents();

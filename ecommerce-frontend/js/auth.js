@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
+      if (password.length < 6) {
+        alert("Password must contain at least 6 characters.");
+        return;
+      }
+
       try {
         const response = await fetch(`${API_BASE_URL}/accounts/register/`, {
           method: "POST",
@@ -69,7 +74,8 @@ document.addEventListener("DOMContentLoaded", () => {
           body: JSON.stringify({
             username: emailOrUsername,
             password: password
-          })
+          }),
+          credentials: 'include'
         });
 
         const data = await response.json();

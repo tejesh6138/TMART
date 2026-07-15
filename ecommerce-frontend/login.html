@@ -17,82 +17,61 @@
 
 
 <header class="header">
-
   <div class="container nav">
-
+    <!-- LEFT: Logo -->
     <a href="index.html" class="tezmart-logo">
-
       <span class="logo-bag">
-
         <span class="bag-handle"></span>
-
         <span class="bag-body">
-
           <span class="bag-mark">T</span>
-
         </span>
-
       </span>
-
-
       <span class="brand-wrap">
-
         <span class="brand-name">
-
           <span class="brand-tez">Tez</span><span class="brand-mart">mart</span>
-
         </span>
-
         <span class="brand-tagline">
-
           SHOP SMART, LIVE BETTER
-
         </span>
-
       </span>
-
     </a>
 
+    <!-- CENTER: Search Bar -->
+    <div class="nav-search-container">
+      <form class="nav-search-form" id="navSearchForm">
+        <input type="text" id="navSearchInput" placeholder="Search products, brands, categories..." required>
+        <button type="submit" id="navSearchButton" aria-label="Search">
+          <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+        </button>
+      </form>
+    </div>
 
+    <!-- RIGHT: Wishlist, Cart, Login/User state, Hamburger -->
     <nav id="navLinks" class="nav-links">
+      <a href="wishlist.html" class="wishlist-link" title="Wishlist">
+        <span class="heart-icon">♡</span>
+        <span id="wishlistCount" class="badge">0</span>
+      </a>
 
-      <a href="index.html">Home</a>
-
-      <a href="products.html">Products</a>
-
-      <a href="cart.html" class="cart-link">
-
-        Cart
-
+      <a href="cart.html" class="cart-link" title="Cart">
+        <span class="cart-icon">🛒</span>
         <span id="cartCount" class="badge">0</span>
-
       </a>
 
-      <a
-        href="login.html"
-        id="authNavLink"
-        class="login-nav-btn active"
-      >
+      <div id="userStateContainer" class="user-state-container">
+        <!-- Will be dynamically populated by JS -->
+      </div>
 
-        <span>Login</span>
-
-      </a>
-
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </nav>
-
-
-    <button class="menu-toggle" id="menuToggle">
-
-      <span></span>
-
-      <span></span>
-
-      <span></span>
-
-    </button>
-
   </div>
-
 </header>
 
 

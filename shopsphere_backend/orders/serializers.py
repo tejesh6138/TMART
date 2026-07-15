@@ -46,9 +46,14 @@ class OrderSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         order_items_data = validated_data.pop('order_items')
-        user_id = validated_data.pop('user_id')
 
-        user = User.objects.get(id=user_id)
+        request = self.context.get('request')
+        if request and request.user and request.user.is_authenticated:
+            user = request.user
+            validated_data.pop('user_id', None)
+        else:
+            user_id = validated_data.pop('user_id')
+            user = User.objects.get(id=user_id)
 
         order = Order.objects.create(user=user, **validated_data)
 

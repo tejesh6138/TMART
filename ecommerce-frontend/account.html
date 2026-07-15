@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tezmart | My Account</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .profile-card {
+      background: white;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+      max-width: 600px;
+      margin: 40px auto;
+    }
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid rgba(124, 58, 237, 0.12);
+      padding-bottom: 20px;
+    }
+    .profile-avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #ff6a00);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    .profile-title h2 {
+      margin: 0;
+      color: #0f172a;
+    }
+    .profile-title p {
+      margin: 4px 0 0;
+      color: #64748b;
+    }
+    .profile-info-group {
+      margin-bottom: 18px;
+    }
+    .profile-info-group label {
+      display: block;
+      font-weight: 600;
+      color: #334155;
+      margin-bottom: 6px;
+      font-size: 0.9rem;
+    }
+    .profile-info-value {
+      background: #f8fafc;
+      padding: 12px 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      color: #0f172a;
+      font-size: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container nav">
+      <!-- LEFT: Logo -->
+      <a href="index.html" class="tezmart-logo">
+        <span class="logo-bag">
+          <span class="bag-handle"></span>
+          <span class="bag-body">
+            <span class="bag-mark">T</span>
+          </span>
+        </span>
+        <span class="brand-wrap">
+          <span class="brand-name">
+            <span class="brand-tez">Tez</span><span class="brand-mart">mart</span>
+          </span>
+          <span class="brand-tagline">
+            SHOP SMART, LIVE BETTER
+          </span>
+        </span>
+      </a>
+
+      <!-- CENTER: Search Bar -->
+      <div class="nav-search-container">
+        <form class="nav-search-form" id="navSearchForm">
+          <input type="text" id="navSearchInput" placeholder="Search products, brands, categories..." required>
+          <button type="submit" id="navSearchButton" aria-label="Search">
+            <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+          </button>
+        </form>
+      </div>
+
+      <!-- RIGHT: Wishlist, Cart, Login/User state, Hamburger -->
+      <nav id="navLinks" class="nav-links">
+        <a href="wishlist.html" class="wishlist-link" title="Wishlist">
+          <span class="heart-icon">♡</span>
+          <span id="wishlistCount" class="badge">0</span>
+        </a>
+
+        <a href="cart.html" class="cart-link" title="Cart">
+          <span class="cart-icon">🛒</span>
+          <span id="cartCount" class="badge">0</span>
+        </a>
+
+        <div id="userStateContainer" class="user-state-container">
+          <!-- Will be dynamically populated by JS -->
+        </div>
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <aside class="tez-sidebar" id="tezSidebar" aria-hidden="true">
+    <div class="tez-sidebar-head">
+      <div class="sidebar-brand">
+        <span class="sidebar-t">T</span>
+        <strong>Tez<span>mart</span></strong>
+      </div>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Close menu">&times;</button>
+    </div>
+    <p class="sidebar-label">EXPLORE TEZMART</p>
+    <div class="sidebar-menu">
+      <!-- Will be dynamically populated by JS -->
+    </div>
+    <div class="sidebar-foot">
+      SHOP SMART <span>•</span> LIVE BETTER
+    </div>
+  </aside>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>My Account</h1>
+      <p>View your profile details</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="profile-card">
+        <div class="profile-header">
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <div class="profile-title">
+            <h2 id="profileName">Username</h2>
+            <p id="profileRole">Tezmart Customer</p>
+          </div>
+        </div>
+
+        <div class="profile-info-group">
+          <label>Email Address</label>
+          <div class="profile-info-value" id="profileEmail">-</div>
+        </div>
+
+        <div class="profile-info-group">
+          <label>Phone Number</label>
+          <div class="profile-info-value" id="profilePhone">-</div>
+        </div>
+
+        <div class="profile-info-group">
+          <label>Saved Shipping Address</label>
+          <div class="profile-info-value" id="profileAddress" style="white-space: pre-wrap;">-</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-bottom">
+      <p>© 2026 Tezmart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script src="js/account.js"></script>
+</body>
+</html>

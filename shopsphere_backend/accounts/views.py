@@ -1,7 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 from .models import User
 from .serializers import RegisterSerializer, UserSerializer
 
@@ -25,12 +25,19 @@ class LoginView(APIView):
         user = authenticate(username=username, password=password)
 
         if user:
+            login(request, user)
             return Response({
                 "message": "Login successful",
                 "user": UserSerializer(user).data
             }, status=status.HTTP_200_OK)
 
         return Response({"error": "Invalid username or password"}, status=status.HTTP_401_UNAUTHORIZED)
+
+
+class LogoutView(APIView):
+    def post(self, request):
+        logout(request)
+        return Response({"message": "Logout successful"}, status=status.HTTP_200_OK)
 
 
 class UserProfileView(APIView):

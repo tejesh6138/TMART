@@ -15,8 +15,16 @@ class WishlistItemSerializer(serializers.ModelSerializer):
         fields = ['id', 'user_id', 'product_id', 'product', 'added_at']
 
     def create(self, validated_data):
-        user = User.objects.get(id=validated_data.pop('user_id'))
-        product = Product.objects.get(id=validated_data.pop('product_id'))
+        request = self.context.get('request')
+        if request and request.user and request.user.is_authenticated:
+            user = request.user
+            validated_data.pop('user_id', None)
+        else:
+            user_id = validated_data.pop('user_id', None)
+            user = User.objects.get(id=user_id) if user_id else None
+
+        product_id = validated_data.pop('product_id')
+        product = Product.objects.get(id=product_id)
 
         wishlist_item, created = WishlistItem.objects.get_or_create(
             user=user,
